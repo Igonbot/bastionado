@@ -3,12 +3,12 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2021-11-17T09:59:25+01:00",
+  "updated": "2021-11-17T09:37:17+01:00",
   "id": "bios-1",
   "duration": 10,
   "title": "Protección de la BIOS/UEFI",
   "summary": "bastionado bios",
-  "source": "C:\\Users\\Usuario\\Documents\\bios2\\codelab-bios1.2.md",
+  "source": "C:\\Users\\Usuario\\Documents\\bios1\\codelab-bios1.1.md",
   "theme": "",
   "status": [
     "published"

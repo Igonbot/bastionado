@@ -3,8 +3,8 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2021-11-17T09:59:25+01:00",
-  "id": "bios-1",
+  "updated": "2021-11-17T10:33:48+01:00",
+  "id": "bios-2",
   "duration": 10,
   "title": "Protección de la BIOS/UEFI",
   "summary": "bastionado bios",
@@ -21,5 +21,5 @@
     "web"
   ],
   "feedback": "https://github.com/Igonbot/bastionado/issues",
-  "url": "bios-1"
+  "url": "bios-2"
 }
