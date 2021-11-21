@@ -28,62 +28,26 @@
                   feedback-link="https://github.com/Igonbot/bastionado/issues">
     
       <google-codelab-step label="Acceso a BIOS/UEFI" duration="10">
-        <h2 is-upgraded>Introduccion</h2>
-<p>La protección con contraseñas en la BIOS o UEFI nos ayudará a prevenir que haya usuarios no autorizados con acceso físico al sistema y haga cambios en la configuración de esta.</p>
-<p>Las principales razones por las que asignaremos contraseñas a la BIOS o UEFI:</p>
+        <h2 is-upgraded>Introduccion </h2>
+<p>La protección con contraseñas en la BIOS o UEFI nos ayudará a prevenir que haya usuarios no autorizados con acceso físico al sistema y haga cambios en la configuración de esta.   Las principales razones por las que asignaremos contraseñas a la BIOS o UEFI: </p>
 <ul>
-<li>Prevenir cambios a las configuraciones</li>
-<li>Prevenir el arranque del sistema</li>
+<li>Prevenir cambios a las configuraciones </li>
+<li>Prevenir el arranque del sistema  Para la BIOS Lenovo Legion 5 Pro 16ACH tendremos que entrar a la pestaña de seguridad tal y como se muestra en la imagen, desde esta pestaña realizaremos las distintas configuraciones de seguridad. <img alt="screely-1637081392210" src="img\\d726ebefef0868b0.png">    <h2 is-upgraded>CONTRASEÑA DE ADMINISTRADOR </h2>
+  Para evitar la configuración de la BIOS/UEFI le asignaremos una contraseña de administrador, esta será requerida cada vez que queramos acceder a la configuración  <img alt="d890fd71-3bb2-4d8a-866c-86b77d661534" src="img\\ac365681985b269c.png"><img alt="passwadm" src="img\\8b2672463b7da095.png">    <h2 is-upgraded>CONTRASEÑA DE ARRANQUE o USUARIO (Power On) </h2>
+  Podemos hacer que requiera una contraseña para el arranque del equipo, para ello tendremos que haber establecido primero una contraseña de administrador para habilitar configurar la contraseña de usuario o arranque.    <em>(Debido a que a es una BIOS simulada no es posible realizar esta parte)  </em>  Arranques Externos   Es necesario proteger el equipo de arranques desde dispositivos externos ya que esto puede producir el arranque de sistemas operativos o herramientas que puedan cargar en memoria. Para ello tendremos que acceder a la pestaña de <strong>boot</strong><img alt="boot" src="img\\4094a18f0b8ecc61.png">  Desde esta pestaña podremos deshabilitar el arraque desde un dispositivo externo, de forma predeterminada suele venir esta opción como habilitada por lo que la deshabilitaremos para aumentar la seguridad de nuestro equipo.  Podremos desactivar los distintos arranques: </li>
+<li>Arranque por USB (USB boot) </li>
+<li>Arranque PXE    En el caso que tengamos activado el arranque PXE podemmos activar que sea mediante IPV4 o IPV6.    Orden de arranque   Podemos seleccionar un orden de arranque para que tenga prioridad el dispositivo que nos interese paa que arranque por este de forma automatica.  <em>(Debido a que a es una BIOS simulada no es posible realizar esta parte)  </em><img alt="efi" src="img\\6fa306cc93969f2c.png">     Otras opciones de seguridad   <h2 is-upgraded>Secure Boot </h2>
+  Habilitar la opción de <strong>Secure Boot</strong> impedira el arranque de aplicaciones a través de dispositivos USB.  <img alt="securityboot" src="img\\8bf7d33bf39285f3.png">    <h2 is-upgraded>Configuracion de puertos I/O </h2>
+  Desde la pestaña de configuracion de los puertos I/O podemos encontrar distintos puertos. Entre ellos podemos encontrar algunos que pueden ser interesante como:   <ul>
+<li>Ethernet LAN </li>
+<li>Wireless WAN </li>
+<li>Bluetooh </li>
+<li>Puerto USB </li>
+<li>Camara integrada </li>
+<li>NFC  <img alt="IO" src="img\\44ef93fcda7450d7.png"></li>
 </ul>
-<p>Para la BIOS Lenovo Legion 5 Pro 16ACH tendremos que entrar a la pestaña de seguridad tal y como se muestra en la imagen, desde esta pestaña realizaremos las distintas configuraciones de seguridad.<br><img alt="screely-1637081392210" src="img\d726ebefef0868b0.png"></p>
-<h2 is-upgraded>CONTRASEÑA DE ADMINISTRADOR</h2>
-<p>Para evitar la configuración de la BIOS/UEFI le asignaremos una contraseña de administrador, esta será requerida cada vez que queramos acceder a la configuración</p>
-<p class="image-container"><img alt="d890fd71-3bb2-4d8a-866c-86b77d661534" src="img\ac365681985b269c.png"><img alt="passwadm" src="img\8b2672463b7da095.png"></p>
-<h2 is-upgraded>CONTRASEÑA DE ARRANQUE o USUARIO (Power On)</h2>
-<p>Podemos hacer que requiera una contraseña para el arranque del equipo, para ello tendremos que haber establecido primero una contraseña de administrador para habilitar configurar la contraseña de usuario o arranque.</p>
-<pre><code>(Debido a que a es una BIOS simulada no es posible realizar esta parte)
-</code></pre>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Arranques Externos" duration="0">
-        <p>Es necesario proteger el equipo de arranques desde dispositivos externos ya que esto puede producir el arranque de sistemas operativos o herramientas que puedan cargar en memoria.<br>Para ello tendremos que acceder a la pestaña de <strong>boot</strong><img alt="boot" src="img\4094a18f0b8ecc61.png"></p>
-<p>Desde esta pestaña podremos deshabilitar el arraque desde un dispositivo externo, de forma predeterminada suele venir esta opción como habilitada por lo que la deshabilitaremos para aumentar la seguridad de nuestro equipo.</p>
-<p>Podremos desactivar los distintos arranques:</p>
-<ul>
-<li>Arranque por USB (USB boot)</li>
-<li>Arranque PXE</li>
+</li>
 </ul>
-<p>En el caso que tengamos activado el arranque PXE podemmos activar que sea mediante IPV4 o IPV6.</p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Orden de arranque" duration="0">
-        <p>Podemos seleccionar un orden de arranque para que tenga prioridad el dispositivo que nos interese paa que arranque por este de forma automatica.</p>
-<pre><code>Debido a que a es una BIOS simulada no es posible realizar esta parte
-</code></pre>
-<p class="image-container"><img alt="efi" src="img\6fa306cc93969f2c.png"></p>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Otras opciones de seguridad" duration="0">
-        <h2 is-upgraded>Secure Boot</h2>
-<p>Habilitar la opción de <strong>Secure Boot</strong> impedira el arranque de aplicaciones a través de dispositivos USB.</p>
-<p class="image-container"><img alt="securityboot" src="img\8bf7d33bf39285f3.png"></p>
-<h2 is-upgraded>Configuracion de puertos I/O</h2>
-<p>Desde la pestaña de configuracion de los puertos I/O podemos encontrar distintos puertos.<br>Entre ellos podemos encontrar algunos que pueden ser interesante como:</p>
-<ul>
-<li>Ethernet LAN</li>
-<li>Wireless WAN</li>
-<li>Bluetooh</li>
-<li>Puerto USB</li>
-<li>Camara integrada</li>
-<li>NFC</li>
-</ul>
-<p class="image-container"><img alt="IO" src="img\44ef93fcda7450d7.png"></p>
 
 
       </google-codelab-step>
@@ -94,6 +58,7 @@
   <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
   <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
   <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
 
 </body>
 </html>
