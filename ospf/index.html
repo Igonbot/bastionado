@@ -50,8 +50,12 @@
 <pre><code>Router(config-if)#ip ospf message-digest-key 1 md5 BASTIONADO-123
 Router(config-if)#ip ospf authentication message-digest
 </code></pre>
-<h2 is-upgraded>CONFIGURACIÓN EN LOS ROUTERS</h2>
-<p>A continuación se configurará los routers para que se comuniquen con los otros routers y compartan las tablas de enrutamiento utilizando el protocolo OSPF.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="CONFIGURACIÓN EN LOS ROUTERS" duration="0">
+        <p>A continuación se configurará los routers para que se comuniquen con los otros routers y compartan las tablas de enrutamiento utilizando el protocolo OSPF.</p>
 <p><strong>Configuración del router #0 :</strong></p>
 <pre><code>Router(config)#router ospf 1
 Router(config-router)#network 192.168.1.0 0.0.0.63 area 0
