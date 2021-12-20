@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-12-20T12:10:48+01:00",
+  "id": "ospf",
+  "duration": 0,
+  "title": "PROTOCOLO OSPF",
+  "summary": "bastionado ospf",
+  "source": "PROTOCOLO OSPF.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown",
+    "ospf",
+    "packet tracer"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/Igonbot/bastionado/issues",
+  "url": "ospf"
+}

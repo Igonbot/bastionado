@@ -1,0 +1,120 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>PROTOCOLO OSPF</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="ospf"
+                  title="PROTOCOLO OSPF"
+                  environment="web"
+                  feedback-link="https://github.com/Igonbot/bastionado/issues">
+    
+      <google-codelab-step label="INTRODUCCIÓN" duration="0">
+        <p>OSPF es un protocolo de enrutamiento que mediante el intercambio de mensajes entre los routers de la red permite conocer la topología de dicha red y calcular el camino más corto a todas las subredes para construir la tabla de enrutamiento de forma automática.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="TOPOLOGIA DE LA CONFIGURACIÓN" duration="0">
+        <p>Esta documentación sobre la configuración OSPF con encriptación MD5 se realizará en base a la siguiente topologia de la red.<br><img alt="topologia" src="img\a44d1ab0fdacf2fe.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="IMPLEMENTACIÓN DE OSPF" duration="0">
+        <p>Para que exista un intercambio de tablas de enrutamiento es necesario necesario configurar los routers y definir las areas conectadas a este.<br>Para ello habria que entrar en la configuración de este y entrar en la configuración del ospf con la siguiente linea:<br><code>Router(config)#router ospf 1</code><br>Una vez dentro indicamos las areas conectadas a este añadiendo la dirección de red,wildcard de la dirección y el area que queremos definir para toda la red.<br><code>Router(config-router)#network 192.168.1.0 0.0.0.63 area 0</code><br>Para que no envie esta información por las interfaces que no queremos que se envie la tabla de enrutamiento tendremos que definir las interfaces como pasiva.<br><code>Router(config-router)#passive-interface g0/1</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configurar autenticación MD5" duration="0">
+        <p>Para configurar la encriptación MD5 para cifrar el intercambio de información entre routers es necesario definirlo en el ospf y configurar las interfaces para que hagan uso de este cifrado.<br><code>Router(config-router)#area 0 authentication message-digest</code><br>En las interfaces definir que claves van a utilizar para el cifrado</p>
+<pre><code>Router(config-if)#ip ospf message-digest-key 1 md5 BASTIONADO-123
+Router(config-if)#ip ospf authentication message-digest
+</code></pre>
+<h2 is-upgraded>CONFIGURACIÓN EN LOS ROUTERS</h2>
+<p>A continuación se configurará los routers para que se comuniquen con los otros routers y compartan las tablas de enrutamiento utilizando el protocolo OSPF.</p>
+<p><strong>Configuración del router #0 :</strong></p>
+<pre><code>Router(config)#router ospf 1
+Router(config-router)#network 192.168.1.0 0.0.0.63 area 0
+Router(config-router)#network 192.168.1.192 0.0.0.3 area 0
+Router(config-router)#default-information originate 
+Router(config-router)#area 0 authentication message-digest
+Router(config-router)#passive-interface g0/1
+</code></pre>
+<p>Configuración de la interfaz:</p>
+<pre><code>Router(config)#interface serial 0/1/0
+Router(config-if)#ip address 192.168.1.193 255.255.255.252
+Router(config-if)#no shutdown 
+Router(config-if)#ip ospf message-digest-key 1 md5 BASTIONADO-123
+Router(config-if)#ip ospf authentication message-digest
+</code></pre>
+<p><strong>Configuración del Router #1:</strong></p>
+<pre><code>Router(config)#router ospf 1
+Router(config-router)#network 192.168.1.64 0.0.0.63 area 0
+Router(config-router)#network 192.168.1.192 0.0.0.3 area 0
+Router(config-router)#default-information originate 
+Router(config-router)#area 0 authentication message-digest
+Router(config-router)#passive-interface g0/1
+</code></pre>
+<p>Configuración de la interfaz:</p>
+<pre><code>Router(config)#interface serial 0/1/0
+Router(config-if)#ip address 192.168.1.193 255.255.255.252
+Router(config-if)#no shutdown 
+Router(config-if)#clock rate 128000
+Router(config-if)#ip ospf message-digest-key 1 md5 BASTIONADO-123
+Router(config-if)#ip ospf authentication message-digest
+
+Router(config)#interface serial 0/1/1
+Router(config-if)#ip address 192.168.1.196 255.255.255.252
+Router(config-if)#no shutdown 
+Router(config-if)#clock rate 128000
+Router(config-if)#ip ospf message-digest-key 1 md5 BASTIONADO-123
+Router(config-if)#ip ospf authentication message-digest
+</code></pre>
+<p><strong>Configuración del Router #2:</strong></p>
+<pre><code>Router(config)#router ospf 1
+Router(config-router)#network 192.168.1.128 0.0.0.63 area 0
+Router(config-router)#network 192.168.1.196 0.0.0.3 area 0
+Router(config-router)#default-information originate 
+Router(config-router)#area 0 authentication message-digest
+Router(config-router)#passive-interface g0/1
+</code></pre>
+<p>Configuración de la interfaz:</p>
+<pre><code>Router(config)#interface serial 0/1/0
+Router(config-if)#ip address 192.168.1.198 255.255.255.252
+Router(config-if)#no shutdown 
+Router(config-if)#ip ospf message-digest-key 1 md5 BASTIONADO-123
+Router(config-if)#ip ospf authentication message-digest
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
